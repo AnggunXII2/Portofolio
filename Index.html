@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anggun Nadzyra - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(244, 114, 182, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(244, 114, 182, 0.5); }
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-slide-in {
+      animation: slideIn 0.6s ease-out forwards;
+    }
+    
+    .animate-pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, #06b6d4, #0ea5e9);
+      transition: width 1s ease-out;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #06b6d4, #0ea5e9);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: blob 8s ease-in-out infinite;
+    }
+    
+    @keyframes blob {
+      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+
+    .profile-image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      overflow: hidden;
+    }
+
+    .profile-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body text-slate-300 overflow-auto" style="background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 25%, #fff5f9 50%, #fef08a 75%, #fef3c7 100%); background-attachment: fixed;">
+  <div id="app-wrapper" class="w-full h-full"><!-- Decorative Background Elements -->
+   <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-40 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+   </div><!-- Header/Navigation -->
+   <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-lg border-b border-white/10">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"><a href="#home" id="nav-logo" class="font-display text-2xl font-bold gradient-text">Anggun N.</a> <!-- Desktop Menu -->
+     <ul class="hidden md:flex items-center gap-8">
+      <li><a href="#home" class="nav-link text-slate-300 hover:text-white transition-colors">Home</a></li>
+      <li><a href="#about" class="nav-link text-slate-300 hover:text-white transition-colors">About</a></li>
+      <li><a href="#skills" class="nav-link text-slate-300 hover:text-white transition-colors">Skills</a></li>
+      <li><a href="#portfolio" class="nav-link text-slate-300 hover:text-white transition-colors">Portfolio</a></li>
+      <li><a href="#experience" class="nav-link text-slate-300 hover:text-white transition-colors">Experience</a></li>
+      <li><a href="#contact" class="nav-link text-slate-300 hover:text-white transition-colors">Contact</a></li>
+     </ul><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+    </nav><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-white/10">
+     <ul class="px-6 py-4 space-y-3">
+      <li><a href="#home" class="block py-2 text-slate-300 hover:text-pink-400 transition-colors">Home</a></li>
+      <li><a href="#about" class="block py-2 text-slate-300 hover:text-pink-400 transition-colors">About</a></li>
+      <li><a href="#skills" class="block py-2 text-slate-300 hover:text-pink-400 transition-colors">Skills</a></li>
+      <li><a href="#portfolio" class="block py-2 text-slate-300 hover:text-pink-400 transition-colors">Portfolio</a></li>
+      <li><a href="#experience" class="block py-2 text-slate-300 hover:text-pink-400 transition-colors">Experience</a></li>
+      <li><a href="#contact" class="block py-2 text-slate-300 hover:text-pink-400 transition-colors">Contact</a></li>
+     </ul>
+    </div>
+   </header><!-- Hero Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20 relative">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center"><!-- Text Content -->
+     <div class="space-y-6 animate-fade-in">
+      <p id="hero-tagline" class="text-cyan-400 font-medium tracking-wider uppercase text-sm">Welcome to my world ✨</p>
+      <h1 id="hero-title" class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">Anggun Nadzyra<br><span class="gradient-text">Putri Purnama</span></h1>
+      <p id="hero-subtitle" class="text-xl md:text-2xl text-slate-400 font-light">Athlete • Makeup Enthusiast • Kagura Player</p>
+      <p id="hero-description" class="text-slate-400 max-w-lg leading-relaxed">Hai! Saya Anggun, seorang gadis yang penuh semangat dengan berbagai keahlian mulai dari olahraga, hingga makeup. Mari berkenalan lebih jauh!</p>
+      <div class="flex flex-wrap gap-4 pt-4"><a href="#portfolio" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"> Lihat Portfolio </a> <a href="#contact" class="px-8 py-3 border border-slate-600 rounded-full font-medium hover:border-pink-400 hover:text-pink-400 transition-all duration-300"> Hubungi Saya </a>
+      </div>
+     </div><!-- Profile Image -->
+     <div class="relative flex justify-center animate-fade-in delay-200">
+      <div class="relative">
+       <div class="w-72 h-72 md:w-80 md:h-80 blob bg-gradient-to-br from-cyan-500 via-blue-500 to-pink-500 animate-pulse-glow"></div>
+       <div class="absolute inset-4 blob overflow-hidden"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&amp;h=400&amp;fit=crop" alt="Anggun Nadzyra Profile" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.parentElement.style.background='linear-gradient(135deg, #06b6d4 0%, #0ea5e9 50%, #ec4899 100%)'; this.style.display='none';">
+       </div>
+      </div><!-- Floating Elements -->
+      <div class="absolute -top-4 -right-4 w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center animate-float"><span class="text-2xl">⚽</span>
+      </div>
+      <div class="absolute -bottom-4 -left-4 w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center animate-float delay-300"><span class="text-2xl">💄</span>
+      </div>
+      <div class="absolute top-1/2 -right-8 w-12 h-12 bg-pink-500/20 rounded-2xl flex items-center justify-center animate-float delay-500"><span class="text-xl">🎮</span>
+      </div>
+     </div>
+    </div><!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+     <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+     </svg>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-2">Get to know me</p>
+      <h2 id="about-title" class="font-display text-4xl md:text-5xl font-bold gradient-text">Tentang Saya</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center"><!-- About Image/Visual -->
+      <div class="relative">
+       <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 border border-slate-700/50">
+        <div class="grid grid-cols-2 gap-4">
+         <div class="bg-slate-800/50 rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-2">
+           ⚽
+          </div>
+          <p class="text-pink-400 font-medium">Sports</p>
+         </div>
+         <div class="bg-slate-800/50 rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-2">
+           💄
+          </div>
+          <p class="text-purple-400 font-medium">Makeup</p>
+         </div>
+         <div class="bg-slate-800/50 rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-2">
+           🎮
+          </div>
+          <p class="text-indigo-400 font-medium">Gaming</p>
+         </div>
+         <div class="bg-slate-800/50 rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl mb-2">
+           🌟
+          </div>
+          <p class="text-blue-400 font-medium">Creative</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- About Text -->
+      <div class="space-y-6">
+       <p id="about-text" class="text-slate-300 leading-relaxed text-lg">Perkenalkan, nama saya <span class="text-cyan-400 font-medium">Anggun Nadzyra Putri Purnama</span>. Saya adalah pribadi yang aktif dan memiliki berbagai minat yang beragam.</p>
+       <p class="text-slate-400 leading-relaxed">Sejak kecil, saya sudah tertarik dengan dunia olahraga. Aktivitas fisik membuat saya merasa hidup dan penuh energi. Selain itu, saya juga mengembangkan keterampilan dasar makeup yang membantu mengekspresikan kreativitas saya.</p>
+       <p class="text-slate-400 leading-relaxed">Di waktu luang, saya senang bermain Mobile Legends dan menjadi main player Kagura. Game ini mengajarkan saya tentang strategi, kerja tim, dan cara mengelola tekanan.</p><!-- Quick Stats -->
+       <div class="grid grid-cols-3 gap-4 pt-6">
+        <div class="text-center p-4 bg-slate-800/30 rounded-xl">
+         <p class="text-2xl font-bold gradient-text">3+</p>
+         <p class="text-slate-500 text-sm">Cabang Olahraga</p>
+        </div>
+        <div class="text-center p-4 bg-slate-800/30 rounded-xl">
+         <p class="text-2xl font-bold gradient-text">🎨</p>
+         <p class="text-slate-500 text-sm">Makeup Artist</p>
+        </div>
+        <div class="text-center p-4 bg-slate-800/30 rounded-xl">
+         <p class="text-2xl font-bold gradient-text">Kagura</p>
+         <p class="text-slate-500 text-sm">Main Hero</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-24 px-6 bg-slate-900/50 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-2">What I can do</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text">Keahlian Saya</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Hard Skills -->
+      <div class="bg-slate-800/30 rounded-3xl p-8 border border-slate-700/50 card-hover">
+       <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3"><span class="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center text-xl">💪</span> Hard Skills</h3>
+       <div class="space-y-5">
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-slate-300">Athletic Performance</span> <span class="text-cyan-400">90%</span>
+         </div>
+         <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-slate-300">Basic Makeup</span> <span class="text-cyan-400">80%</span>
+         </div>
+         <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 80%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-slate-300">Gaming (Kagura ML)</span> <span class="text-cyan-400">88%</span>
+         </div>
+         <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 88%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-slate-300">Creative Thinking</span> <span class="text-cyan-400">85%</span>
+         </div>
+         <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 85%"></div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="bg-slate-800/30 rounded-3xl p-8 border border-slate-700/50 card-hover">
+       <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3"><span class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center text-xl">🧠</span> Soft Skills</h3>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="bg-slate-700/30 rounded-2xl p-5 text-center card-hover">
+         <div class="w-14 h-14 mx-auto bg-pink-500/20 rounded-2xl flex items-center justify-center mb-3"><span class="text-2xl">🗣️</span>
+         </div>
+         <p class="text-slate-300 font-medium">Komunikasi</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-5 text-center card-hover">
+         <div class="w-14 h-14 mx-auto bg-purple-500/20 rounded-2xl flex items-center justify-center mb-3"><span class="text-2xl">🤝</span>
+         </div>
+         <p class="text-slate-300 font-medium">Kerja Tim</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-5 text-center card-hover">
+         <div class="w-14 h-14 mx-auto bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-3"><span class="text-2xl">🎨</span>
+         </div>
+         <p class="text-slate-300 font-medium">Kreativitas</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-5 text-center card-hover">
+         <div class="w-14 h-14 mx-auto bg-blue-500/20 rounded-2xl flex items-center justify-center mb-3"><span class="text-2xl">⚡</span>
+         </div>
+         <p class="text-slate-300 font-medium">Adaptif</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-5 text-center card-hover">
+         <div class="w-14 h-14 mx-auto bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-3"><span class="text-2xl">🎯</span>
+         </div>
+         <p class="text-slate-300 font-medium">Fokus</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-5 text-center card-hover">
+         <div class="w-14 h-14 mx-auto bg-amber-500/20 rounded-2xl flex items-center justify-center mb-3"><span class="text-2xl">💡</span>
+         </div>
+         <p class="text-slate-300 font-medium">Problem Solving</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portfolio" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium tracking-wider uppercase text-sm mb-2">My creative works</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text">Portfolio</h2>
+     </div><!-- Portfolio Filter -->
+     <div class="flex flex-wrap justify-center gap-3 mb-12"><button class="portfolio-filter active px-6 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium transition-all" data-filter="all">Semua</button> <button class="portfolio-filter px-6 py-2 rounded-full bg-slate-800 text-slate-400 hover:text-white transition-all" data-filter="sports">Sports</button> <button class="portfolio-filter px-6 py-2 rounded-full bg-slate-800 text-slate-400 hover:text-white transition-all" data-filter="makeup">Makeup</button> <button class="portfolio-filter px-6 py-2 rounded-full bg-slate-800 text-slate-400 hover:text-white transition-all" data-filter="gaming">Gaming</button>
+     </div><!-- Portfolio Grid -->
+     <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Sports Project 1 -->
+      <div class="portfolio-item group relative bg-slate-800/30 rounded-2xl overflow-hidden border border-slate-700/50 card-hover" data-category="sports">
+       <div class="aspect-video bg-gradient-to-br from-emerald-600/30 to-teal-600/30 flex items-center justify-center"><span class="text-6xl group-hover:scale-110 transition-transform">⚽</span>
+       </div>
+       <div class="p-6"><span class="text-xs text-emerald-400 uppercase tracking-wider">Sports</span>
+        <h3 class="font-display text-xl font-bold text-white mt-2 mb-2">Athletic Achievement</h3>
+        <p class="text-slate-400 text-sm">Prestasi dalam berbagai kompetisi olahraga tingkat sekolah.</p>
+       </div>
+       <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"><button class="px-4 py-2 bg-emerald-500 rounded-full text-sm font-medium">Lihat Detail</button>
+       </div>
+      </div><!-- Sports Project 2 -->
+      <div class="portfolio-item group relative bg-slate-800/30 rounded-2xl overflow-hidden border border-slate-700/50 card-hover" data-category="sports">
+       <div class="aspect-video bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center"><span class="text-6xl group-hover:scale-110 transition-transform">🏆</span>
+       </div>
+       <div class="p-6"><span class="text-xs text-blue-400 uppercase tracking-wider">Sports</span>
+        <h3 class="font-display text-xl font-bold text-white mt-2 mb-2">Team Competition</h3>
+        <p class="text-slate-400 text-sm">Mewakili sekolah dalam kompetisi olahraga antar sekolah.</p>
+       </div>
+      </div><!-- Makeup Project 1 -->
+      <div class="portfolio-item group relative bg-slate-800/30 rounded-2xl overflow-hidden border border-slate-700/50 card-hover" data-category="makeup">
+       <div class="aspect-video bg-gradient-to-br from-rose-600/30 to-pink-600/30 flex items-center justify-center"><span class="text-6xl group-hover:scale-110 transition-transform">💄</span>
+       </div>
+       <div class="p-6"><span class="text-xs text-rose-400 uppercase tracking-wider">Makeup</span>
+        <h3 class="font-display text-xl font-bold text-white mt-2 mb-2">Natural Glam Look</h3>
+        <p class="text-slate-400 text-sm">Eksplorasi makeup natural hingga glamour untuk berbagai acara.</p>
+       </div>
+      </div><!-- Makeup Project 2 -->
+      <div class="portfolio-item group relative bg-slate-800/30 rounded-2xl overflow-hidden border border-slate-700/50 card-hover" data-category="makeup">
+       <div class="aspect-video bg-gradient-to-br from-pink-600/30 to-fuchsia-600/30 flex items-center justify-center"><span class="text-6xl group-hover:scale-110 transition-transform">✨</span>
+       </div>
+       <div class="p-6"><span class="text-xs text-pink-400 uppercase tracking-wider">Makeup</span>
+        <h3 class="font-display text-xl font-bold text-white mt-2 mb-2">Party &amp; Events</h3>
+        <p class="text-slate-400 text-sm">Makeup untuk acara spesial dan pesta dengan hasil professional.</p>
+       </div>
+      </div><!-- Gaming Project 1 -->
+      <div class="portfolio-item group relative bg-slate-800/30 rounded-2xl overflow-hidden border border-slate-700/50 card-hover" data-category="gaming">
+       <div class="aspect-video bg-gradient-to-br from-blue-600/30 to-indigo-600/30 flex items-center justify-center"><span class="text-6xl group-hover:scale-110 transition-transform">🎮</span>
+       </div>
+       <div class="p-6"><span class="text-xs text-blue-400 uppercase tracking-wider">Gaming</span>
+        <h3 class="font-display text-xl font-bold text-white mt-2 mb-2">Kagura Main Player</h3>
+        <p class="text-slate-400 text-sm">Menguasai hero Kagura di Mobile Legends dengan berbagai highlight plays.</p>
+       </div>
+      </div><!-- Gaming Project 2 -->
+      <div class="portfolio-item group relative bg-slate-800/30 rounded-2xl overflow-hidden border border-slate-700/50 card-hover" data-category="gaming">
+       <div class="aspect-video bg-gradient-to-br from-violet-600/30 to-purple-600/30 flex items-center justify-center"><span class="text-6xl group-hover:scale-110 transition-transform">⚔️</span>
+       </div>
+       <div class="p-6"><span class="text-xs text-violet-400 uppercase tracking-wider">Gaming</span>
+        <h3 class="font-display text-xl font-bold text-white mt-2 mb-2">Competitive Play</h3>
+        <p class="text-slate-400 text-sm">Bermain kompetitif dengan tim dan strategi yang solid.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Experience Section -->
+   <section id="experience" class="py-24 px-6 bg-slate-900/50 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium tracking-wider uppercase text-sm mb-2">My journey</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text">Pengalaman &amp; Prestasi</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Experience Timeline -->
+      <div class="space-y-8">
+       <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3"><span class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center">📋</span> Pengalaman</h3>
+       <div class="relative pl-8 border-l-2 border-purple-500/30">
+        <div class="absolute left-0 top-0 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-1/2"></div>
+        <div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 mb-6"><span class="text-purple-400 text-sm">2022 - Sekarang</span>
+         <h4 class="font-display text-lg font-bold text-white mt-2">Tim Olahraga Sekolah</h4>
+         <p class="text-slate-400 text-sm mt-2">Mewakili sekolah dalam berbagai kompetisi olahraga antar sekolah.</p>
+        </div>
+       </div>
+       <div class="relative pl-8 border-l-2 border-indigo-500/30">
+        <div class="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-1/2"></div>
+        <div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50"><span class="text-indigo-400 text-sm">2021 - Sekarang</span>
+         <h4 class="font-display text-lg font-bold text-white mt-2">Mobile Legends Player</h4>
+         <p class="text-slate-400 text-sm mt-2">Bermain kompetitif dengan spesialisasi hero Kagura.</p>
+        </div>
+       </div>
+      </div><!-- Achievements -->
+      <div class="space-y-6">
+       <h3 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3"><span class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center">🏆</span> Prestasi</h3>
+       <div class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 card-hover flex items-start gap-4">
+        <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center shrink-0"><span class="text-2xl">🎖️</span>
+        </div>
+        <div>
+         <h4 class="font-display text-lg font-bold text-white">Atlet Berprestasi</h4>
+         <p class="text-slate-400 text-sm mt-1">Penghargaan sebagai atlet berprestasi di berbagai cabang olahraga.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-pink-400 font-medium tracking-wider uppercase text-sm mb-2">Let's connect</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text">Hubungi Saya</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div class="space-y-6">
+       <p class="text-slate-300 text-lg leading-relaxed">Tertarik untuk berkolaborasi atau sekadar menyapa? Jangan ragu untuk menghubungi saya melalui channel di bawah ini!</p>
+       <div class="space-y-4"><a id="contact-email" href="mailto:anggun@email.com" class="flex items-center gap-4 bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50 card-hover group">
+         <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center group-hover:bg-pink-500/30 transition-colors">
+          <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+         </div>
+         <div>
+          <p class="text-slate-500 text-sm">Email</p>
+          <p class="text-white font-medium">anggun@email.com</p>
+         </div></a> <a id="contact-whatsapp" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50 card-hover group">
+         <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/30 transition-colors">
+          <svg class="w-6 h-6 text-emerald-400" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+         </div>
+         <div>
+          <p class="text-slate-500 text-sm">WhatsApp</p>
+          <p class="text-white font-medium">+62 812-3456-7890</p>
+         </div></a> <a id="contact-instagram" href="https://instagram.com/anggun" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50 card-hover group">
+         <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+          <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+         </div>
+         <div>
+          <p class="text-slate-500 text-sm">Instagram</p>
+          <p class="text-white font-medium">@anggun</p>
+         </div></a>
+       </div>
+      </div><!-- Contact Form -->
+      <div class="bg-slate-800/30 rounded-3xl p-8 border border-slate-700/50">
+       <h3 class="font-display text-xl font-bold text-white mb-6">Kirim Pesan</h3>
+       <form id="contact-form" class="space-y-5">
+        <div><label for="name" class="block text-slate-400 text-sm mb-2">Nama Lengkap</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 transition-colors" placeholder="Masukkan nama Anda">
+        </div>
+        <div><label for="email" class="block text-slate-400 text-sm mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 transition-colors" placeholder="email@example.com">
+        </div>
+        <div><label for="message" class="block text-slate-400 text-sm mb-2">Pesan</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 transition-colors resize-none" placeholder="Tulis pesan Anda..."></textarea>
+        </div><button type="submit" class="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl font-medium hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300 transform hover:scale-[1.02]"> Kirim Pesan ✨ </button>
+       </form>
+       <div id="form-success" class="hidden mt-4 p-4 bg-emerald-500/20 border border-emerald-500/50 rounded-xl text-emerald-400 text-center">
+        Pesan berhasil dikirim! Terima kasih! 💝
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-12 px-6 bg-slate-950/80 border-t border-white/10">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left"><a href="#home" class="font-display text-2xl font-bold gradient-text">Anggun N.</a>
+       <p class="text-slate-500 text-sm mt-2">Athlete • Makeup Artist • Gamer</p>
+      </div><!-- Social Links -->
+      <div class="flex items-center gap-4"><a href="https://instagram.com/anggun" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-pink-400 hover:bg-slate-700 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg></a> <a href="https://tiktok.com/@anggun" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-pink-400 hover:bg-slate-700 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+        </svg></a> <a href="https://youtube.com/@anggun" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-slate-400 hover:text-pink-400 hover:bg-slate-700 transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg></a>
+      </div>
+     </div>
+     <div class="mt-8 pt-8 border-t border-slate-800 text-center">
+      <p class="text-slate-500 text-sm">© 2024 Anggun Nadzyra Putri Purnama. All rights reserved. Made with 💝</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      site_name: 'Anggun N.',
+      tagline: 'Welcome to my world ✨',
+      hero_title: 'Anggun Nadzyra Putri Purnama',
+      hero_subtitle: 'Athlete • Makeup Enthusiast • Kagura Player',
+      hero_description: 'Hai! Saya Anggun, seorang gadis yang penuh semangat dengan berbagai keahlian mulai dari olahraga, hingga makeup. Mari berkenalan lebih jauh!',
+      about_title: 'Tentang Saya',
+      about_text: 'Saya adalah pribadi yang aktif dan memiliki berbagai minat yang beragam.',
+      email: 'angguntempest@gmail.com',
+      whatsapp: '081223448439',
+      instagram: '@anggunn_tempest',
+      background_color: '#fce7f3',
+      surface_color: '#faf5ff',
+      text_color: '#9ca3af',
+      primary_color: '#ec4899',
+      secondary_color: '#d97706'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Element SDK initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          
+          // Update site name
+          const navLogo = document.getElementById('nav-logo');
+          if (navLogo) navLogo.textContent = config.site_name || defaultConfig.site_name;
+          
+          // Update hero section
+          const heroTagline = document.getElementById('hero-tagline');
+          if (heroTagline) heroTagline.textContent = config.tagline || defaultConfig.tagline;
+          
+          const heroTitle = document.getElementById('hero-title');
+          if (heroTitle) {
+            const nameParts = (config.hero_title || defaultConfig.hero_title).split(' ');
+            if (nameParts.length >= 2) {
+              heroTitle.innerHTML = `${nameParts.slice(0, 2).join(' ')}<br/><span class="gradient-text">${nameParts.slice(2).join(' ')}</span>`;
+            } else {
+              heroTitle.innerHTML = `<span class="gradient-text">${config.hero_title || defaultConfig.hero_title}</span>`;
+            }
+          }
+          
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          
+          const heroDescription = document.getElementById('hero-description');
+          if (heroDescription) heroDescription.textContent = config.hero_description || defaultConfig.hero_description;
+          
+          // Update about section
+          const aboutTitle = document.getElementById('about-title');
+          if (aboutTitle) aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+          
+          const aboutText = document.getElementById('about-text');
+          if (aboutText) {
+            const name = config.hero_title || defaultConfig.hero_title;
+            aboutText.innerHTML = `Perkenalkan, nama saya <span class="text-cyan-400 font-medium">${name}</span>. ${config.about_text || defaultConfig.about_text}`;
+          }
+          
+          // Update contact info
+          const contactEmail = document.getElementById('contact-email');
+          if (contactEmail) {
+            const email = config.email || defaultConfig.email;
+            contactEmail.href = `mailto:${email}`;
+            contactEmail.querySelector('p.text-white').textContent = email;
+          }
+          
+          const contactWhatsapp = document.getElementById('contact-whatsapp');
+          if (contactWhatsapp) {
+            const wa = config.whatsapp || defaultConfig.whatsapp;
+            const waNumber = wa.replace(/[^0-9]/g, '');
+            contactWhatsapp.href = `https://wa.me/${waNumber}`;
+            contactWhatsapp.querySelector('p.text-white').textContent = wa;
+          }
+          
+          const contactInstagram = document.getElementById('contact-instagram');
+          if (contactInstagram) {
+            const ig = config.instagram || defaultConfig.instagram;
+            const igHandle = ig.startsWith('@') ? ig.substring(1) : ig;
+            contactInstagram.href = `https://instagram.com/${igHandle}`;
+            contactInstagram.querySelector('p.text-white').textContent = ig.startsWith('@') ? ig : `@${ig}`;
+          }
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (v) => { cfg.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (v) => { cfg.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); }
+            },
+            {
+              get: () => cfg.secondary_color || defaultConfig.secondary_color,
+              set: (v) => { cfg.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['site_name', cfg.site_name || defaultConfig.site_name],
+          ['tagline', cfg.tagline || defaultConfig.tagline],
+          ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
+          ['hero_description', cfg.hero_description || defaultConfig.hero_description],
+          ['about_title', cfg.about_title || defaultConfig.about_title],
+          ['about_text', cfg.about_text || defaultConfig.about_text],
+          ['email', cfg.email || defaultConfig.email],
+          ['whatsapp', cfg.whatsapp || defaultConfig.whatsapp],
+          ['instagram', cfg.instagram || defaultConfig.instagram]
+        ])
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Portfolio filter functionality
+    const filterBtns = document.querySelectorAll('.portfolio-filter');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-gradient-to-r', 'from-pink-500', 'to-purple-600', 'text-white');
+          b.classList.add('bg-slate-800', 'text-slate-400');
+        });
+        btn.classList.remove('bg-slate-800', 'text-slate-400');
+        btn.classList.add('bg-gradient-to-r', 'from-pink-500', 'to-purple-600', 'text-white');
+        
+        // Filter items
+        portfolioItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+            item.style.animation = 'fadeInUp 0.5s ease-out';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Show success message
+      formSuccess.classList.remove('hidden');
+      contactForm.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        formSuccess.classList.add('hidden');
+      }, 5000);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe sections for animation
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(section);
+    });
+    
+    // Set first section visible immediately
+    document.getElementById('home').style.opacity = '1';
+    document.getElementById('home').style.transform = 'translateY(0)';
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c872a7ea395ff78',t:'MTc3MDE3NjYyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
